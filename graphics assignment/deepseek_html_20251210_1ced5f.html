@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A-Frame: Individual Assessment - Dining Scene</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.0/dist/aframe-environment-component.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="instructions">
+        <h1>A-Frame Assessment</h1>
+        <p>Table with 2 Chairs, MiLo & Milk Tins, 2 Cups</p>
+        <p>Table/Chairs: Blue-Black | MiLo Tin: Green | Milk Tin: White</p>
+        <p>Use mouse to look around | WASD to move | Click to interact</p>
+    </div>
+    
+    <a-scene loading-screen="enabled: false" background="color: #88c">
+        
+        <!-- Sky -->
+        <a-sky color="#87CEEB"></a-sky>
+        
+        <!-- Lighting -->
+        <a-entity light="type: ambient; color: #fff; intensity: 0.8"></a-entity>
+        <a-entity light="type: directional; color: #fff; intensity: 0.9" position="-5 10 5"></a-entity>
+        <a-entity light="type: point; color: #fff; intensity: 0.7" position="2 4 -2"></a-entity>
+        <a-entity light="type: hemisphere; color: #87CEEB; groundColor: #228B22; intensity: 0.6"></a-entity>
+
+        <!-- Green Ground -->
+        <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#228B22" repeat="20 20" roughness="0.8"></a-plane>
+        
+        <!-- Grid pattern on ground -->
+        <a-plane position="0 0.01 0" rotation="-90 0 0" width="50" height="50" opacity="0.1" color="#000" wireframe="true" wireframe-linewidth="1"></a-plane>
+
+        <!-- Main Table - Blue Black -->
+        <a-box class="table-top" position="0 1.2 0" width="3" height="0.1" depth="2"></a-box>
+        <a-cylinder class="table-leg" position="-1.2 0.6 0.7" radius="0.05" height="1.2"></a-cylinder>
+        <a-cylinder class="table-leg" position="1.2 0.6 0.7" radius="0.05" height="1.2"></a-cylinder>
+        <a-cylinder class="table-leg" position="-1.2 0.6 -0.7" radius="0.05" height="1.2"></a-cylinder>
+        <a-cylinder class="table-leg" position="1.2 0.6 -0.7" radius="0.05" height="1.2"></a-cylinder>
+
+        <!-- MiLo Tin - Green -->
+        <a-cylinder id="milo-tin" position="-0.5 1.35 0.3" radius="0.12" height="0.25">
+            <a-cylinder class="tin-lid" position="0 0.13 0" radius="0.1" height="0.02"></a-cylinder>
+            <a-text class="tin-label" value="MiLo" position="0 0.05 0.121" align="center" width="0.8" scale="0.3 0.3 0.3"></a-text>
+        </a-cylinder>
+
+        <!-- Milk Tin - White -->
+        <a-cylinder id="milk-tin" position="0.5 1.35 -0.2" radius="0.12" height="0.3">
+            <a-cylinder class="tin-lid" position="0 0.15 0" radius="0.1" height="0.02"></a-cylinder>
+            <a-text class="tin-label" value="MILK" position="0 0.05 0.121" align="center" width="0.8" scale="0.3 0.3 0.3"></a-text>
+        </a-cylinder>
+
+        <!-- Cup 1 -->
+        <a-cylinder id="cup-blue" position="-0.8 1.35 0" radius="0.08" height="0.15" open-ended="true">
+            <a-cylinder class="cup-rim" position="0 0.08 0" radius="0.07" height="0.01"></a-cylinder>
+            <a-cylinder class="cup-base" position="0 -0.07 0" radius="0.1" height="0.01"></a-cylinder>
+        </a-cylinder>
+
+        <!-- Cup 2 -->
+        <a-cylinder id="cup-pink" position="0.8 1.35 0" radius="0.08" height="0.15" open-ended="true">
+            <a-cylinder class="cup-rim" position="0 0.08 0" radius="0.07" height="0.01"></a-cylinder>
+            <a-cylinder class="cup-base" position="0 -0.07 0" radius="0.1" height="0.01"></a-cylinder>
+        </a-cylinder>
+
+        <!-- Chair 1 - Blue Black -->
+        <a-box class="chair-seat" position="-2 0.5 -1.5" width="0.8" height="0.1" depth="0.8"></a-box>
+        <a-box class="chair-back" position="-2 0.9 -1.1" width="0.8" height="0.8" depth="0.1"></a-box>
+        <a-cylinder class="chair-leg" position="-2.35 0.25 -1.5" radius="0.03" height="0.5"></a-cylinder>
+        <a-cylinder class="chair-leg" position="-1.65 0.25 -1.5" radius="0.03" height="0.5"></a-cylinder>
+        <a-cylinder class="chair-leg" position="-2.35 0.25 -0.7" radius="0.03" height="0.5"></a-cylinder>
+        <a-cylinder class="chair-leg" position="-1.65 0.25 -0.7" radius="0.03" height="0.5"></a-cylinder>
+
+        <!-- Chair 2 - Blue Black -->
+        <a-box class="chair-seat" position="2 0.5 1.5" width="0.8" height="0.1" depth="0.8" rotation="0 180 0"></a-box>
+        <a-box class="chair-back" position="2 0.9 1.1" width="0.8" height="0.8" depth="0.1" rotation="0 180 0"></a-box>
+        <a-cylinder class="chair-leg" position="2.35 0.25 1.5" radius="0.03" height="0.5"></a-cylinder>
+        <a-cylinder class="chair-leg" position="1.65 0.25 1.5" radius="0.03" height="0.5"></a-cylinder>
+        <a-cylinder class="chair-leg" position="2.35 0.25 0.7" radius="0.03" height="0.5"></a-cylinder>
+        <a-cylinder class="chair-leg" position="1.65 0.25 0.7" radius="0.03" height="0.5"></a-cylinder>
+
+        <!-- Decorative Elements -->
+        <a-box id="table-runner" position="0 1.25 0" width="2.8" height="0.005" depth="1.8"></a-box>
+        
+        <!-- Flowers in a Vase -->
+        <a-cylinder id="vase" position="0 1.35 -0.5" radius="0.06" height="0.2">
+            <!-- Flower stems -->
+            <a-cylinder class="flower-stem" position="-0.05 0.3 0.03" radius="0.005" height="0.3" rotation="20 0 0"></a-cylinder>
+            <a-cylinder class="flower-stem" position="0.04 0.3 -0.02" radius="0.005" height="0.35" rotation="-15 0 0"></a-cylinder>
+            <a-cylinder class="flower-stem" position="0.03 0.3 0.04" radius="0.005" height="0.25" rotation="10 0 0"></a-cylinder>
+            
+            <!-- Flower heads -->
+            <a-sphere class="flower-red" position="-0.05 0.45 0.03" radius="0.03"></a-sphere>
+            <a-sphere class="flower-orange" position="0.04 0.45 -0.02" radius="0.03"></a-sphere>
+            <a-sphere class="flower-yellow" position="0.03 0.38 0.04" radius="0.025"></a-sphere>
+        </a-cylinder>
+        
+        <!-- Napkins -->
+        <a-box class="napkin" position="-1.1 1.26 0.8" width="0.2" height="0.01" depth="0.2" rotation="0 45 0"></a-box>
+        <a-box class="napkin" position="1.1 1.26 -0.8" width="0.2" height="0.01" depth="0.2" rotation="0 45 0"></a-box>
+        
+        <!-- Wall Art -->
+        <a-box id="wall-art" position="0 3 -4" width="2.5" height="1.5" depth="0.1">
+            <a-text id="art-text" value="Enjoy!" position="0 0 0.051" align="center" width="3" scale="1 1 1"></a-text>
+        </a-box>
+
+        <!-- Camera - positioned for immediate visibility -->
+        <a-camera position="0 3 8" look-controls wasd-controls="enabled: true; fly: false">
+            <a-cursor></a-cursor>
+        </a-camera>
+
+    </a-scene>
+    
+    <script src="index.js"></script>
+</body>
+</html>
